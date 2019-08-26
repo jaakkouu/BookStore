@@ -1,7 +1,8 @@
 package fi.haagahelia.courses.course.model;
 
+
 public class Book {
-    
+	private Long id;
     private String title,
         author,
         year,
@@ -9,6 +10,14 @@ public class Book {
         price;
 
     public Book(){
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
