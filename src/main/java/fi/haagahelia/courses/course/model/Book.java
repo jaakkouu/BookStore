@@ -1,7 +1,14 @@
 package fi.haagahelia.courses.course.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
     private String title,
         author,
@@ -9,15 +16,17 @@ public class Book {
         isbn,
         price;
 
-    public Book(){
+    public Book(String author, String isbn, String price, String title, String year){
+        super();
+        this.author = author;
+        this.isbn = isbn;
+        this.price = price;
+        this.title = title;
+        this.year = year;
     }
 
     public Long getId() {
         return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -39,6 +48,10 @@ public class Book {
     public String getPrice() {
         return this.price;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }   
 
     public void setTitle(String title) {
         this.title = title;

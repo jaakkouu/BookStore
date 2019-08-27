@@ -5,9 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class BookController {
-    @RequestMapping("/index")
+public class BookListController {
+    @RequestMapping("/booklist")
     public String main(Model model) {
-        return "index";
+        return "booklist";
     }
 }
