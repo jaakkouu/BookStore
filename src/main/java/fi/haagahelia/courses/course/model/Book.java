@@ -16,6 +16,10 @@ public class Book {
         isbn,
         price;
 
+    public Book() {
+        
+    }
+
     public Book(String author, String isbn, String price, String title, String year){
         super();
         this.author = author;
