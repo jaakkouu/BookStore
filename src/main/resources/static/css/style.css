@@ -1,20 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+main {
+    padding: 10px;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+header {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
 table {
+    width: 100%;
     background-color: #ffffff;
     border: 1px solid #ececec;
     border-radius: 3px
 }
 
 table thead tr {
-    background-color: #eeeeee
+    background-color: #fcfcfc;
 }
 
 table thead tr th {
+    text-align: left;
     padding: 10px 15px;
-    color: #111111
+    color: #111111;
+    border-bottom: 1px solid #ececec
+}
+
+table thead tr th:last-child {
+    text-align: center
 }
 
 table tbody tr:hover {
-    background-color: #c1c1c1;
+    background-color: #f9f9f9
 }
 
 table tbody tr:hover td {
@@ -25,6 +57,10 @@ table tbody tr td {
     border-bottom: 1px solid #ececec
 }
 
+table tbody tr td:last-child {
+    text-align: center
+}
+
 table tbody tr:last-child td {
     border-bottom: 0
 }
@@ -32,4 +68,54 @@ table tbody tr:last-child td {
 table tbody tr td {
     padding: 10px 15px;
     color: #555555
+}
+
+.fa.fa-trash {
+    color: #FF4136
+}
+
+.fa.fa-plus {
+    color: #2ECC40
+}
+
+form {
+    display: grid;
+    grid-row-gap: 10px
+}
+
+form label {
+    display: grid;
+    grid-row-gap: 5px
+}
+
+form label input {
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    padding: 8px 12px
+}
+
+button.btn,
+input.btn,
+a.btn  {
+    cursor: pointer;
+    background-color: transparent;
+    color: #111;
+    padding: 8px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid #eee;
+    border-radius: 5px
+}
+
+a.btn {
+    border: 0;
+    color: blue
+}
+
+button.btn:hover,
+input.btn:hover {
+    border: 1px solid #c5c5c5;
+    background-color: #ececec
 }

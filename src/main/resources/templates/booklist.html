@@ -4,11 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+        <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" type="text/css">
         <title>BookStore :: Books</title>
     </head>
     <body>
-        <main>
+        <header>
             <h1>Books</h1>
+        </header>
+        <main>
             <table cellspacing=0>
                 <thead>
                     <tr>
@@ -16,6 +19,9 @@
                         <th>Title</th>
                         <th>ISBN</th>
                         <th>Year</th>
+                        <th>
+                            <a th:href="@{/book/add}"><i class="fa fa-plus fa-x2"></i></a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,8 +30,10 @@
                         <td th:text="${book.getTitle()}" />
                         <td th:text="${book.getIsbn()}" />
                         <td th:text="${book.getYear()}" />
+                        <td><a th:href="@{/book/{id}/delete(id=${book.getId()})}"><i class="fa fa-trash fa-x2"></i></a></td>
                     </tr>
                 </tbody>
+                <cfooter
             </table>
         </main>
     </body>
