@@ -1,5 +1,7 @@
 package fi.haagahelia.courses.course.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,22 @@ public class BookController {
     public String buildBook(Model model) {
         model.addAttribute("book", new Book());
         return "addbook";
+    }
+
+    @RequestMapping("/{id}/edit")
+    public String edit(@PathVariable("id") String id, Model model) {
+        long bookId = Long.parseLong(id);
+        if(repository.existsById(bookId)) {
+            Optional<Book> book = repository.findById(bookId);
+            model.addAttribute("book", book);
+        } 
+        return "editbook";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Book book){
+        repository.save(book);
+        return "redirect:/booklist";
     }
 
     @PostMapping("/add")
