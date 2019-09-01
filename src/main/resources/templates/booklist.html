@@ -17,8 +17,9 @@
                     <tr>
                         <th>Author</th>
                         <th>Title</th>
-                        <th>ISBN</th>
                         <th>Year</th>
+                        <th>Category</th>
+                        <th>ISBN</th>
                         <th></th>
                         <th>
                             <a th:href="@{/book/add}"><i class="fa fa-plus fa-x2"></i></a>
@@ -29,8 +30,9 @@
                     <tr th:each="book: ${books}">
                         <td th:text="${book.getAuthor()}" />
                         <td th:text="${book.getTitle()}" />
-                        <td th:text="${book.getIsbn()}" />
                         <td th:text="${book.getYear()}" />
+                        <td th:text="${book.getCategory().getName()}" />
+                        <td th:text="${book.getIsbn()}" />
                         <td><a th:href="@{/book/{id}/edit(id=${book.getId()})}"><i class="fa fa-edit fa-x2"></i></a></td>
                         <td><a th:href="@{/book/{id}/delete(id=${book.getId()})}"><i class="fa fa-trash fa-x2"></i></a></td>
                     </tr>

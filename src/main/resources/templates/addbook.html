@@ -14,23 +14,30 @@
             <form action="#" th:action="@{/book/add}" th:object="${book}" method="post">
                 <label for="title">
                     <span>Title</span>
-                    <input type="text" th:field="*{title}" />
+                    <input type="text" id="title" th:field="*{title}" />
                 </label>
                 <label for="author">
                     <span>Author</span>
-                    <input type="text" th:field="*{author}" />
+                    <input type="text" id="author" th:field="*{author}" />
                 </label>
                 <label for="year">
                     <span>Year</span>
-                    <input type="text" th:field="*{year}" />
+                    <input type="text" id="year" th:field="*{year}" />
                 </label>
                 <label for="isbn">
                     <span>ISBN</span>
-                    <input type="text" th:field="*{isbn}" />
+                    <input type="text" id="isbn" th:field="*{isbn}" />
                 </label>
                 <label for="price">
                     <span>Price</span>
-                    <input type="text" th:field="*{price}" />
+                    <input type="text" id="price" th:field="*{price}" />
+                </label>
+                <label for="category">
+                    <span>Category</span>
+                    <select id="category" th:field="*{category}">
+                        <option value="" selected>Choose Category..</option>
+                        <option th:each="category : ${categories}" th:value="${category.id}" th:utext="${category.name}"/>
+                    </select>
                 </label>
                 <div style="text-align: right">
                     <a class="btn" th:href="@{/booklist}">Takaisin</a>

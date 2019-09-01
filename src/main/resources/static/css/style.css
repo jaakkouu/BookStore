@@ -88,7 +88,9 @@ form label {
     grid-row-gap: 5px
 }
 
-form label input {
+form label input,
+form label select,
+form label textarea {
     border: 1px solid #eeeeee;
     border-radius: 5px;
     padding: 8px 12px
