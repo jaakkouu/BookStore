@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+        <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" type="text/css">
+        <title th:text="${book.getTitle()}" />
+    </head>
+    <body>
+        <header>
+            <a th:href="@{/}"><h1><i class="fa fa-arrow-left"></i></h1></a>
+        </header>
+        <main>
+            <div th:object="${book}" class="book">
+                <div class="header">
+                    <div class="bookTitle">
+                        <h1 th:text="*{title}" /> by <span th:text="*{author}"/>
+                    </div>
+                    
+                </div>
+                <div class="sidebar">
+                    <div><strong>Year: </strong><span th:text="*{year}" /></div>
+                    <div><strong>ISBN: </strong><span th:text="*{isbn}" /></div>
+                    <div><strong>Price: </strong><span th:text="*{price}" /></div>
+                </div>
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam nobis ullam delectus quas, quod sunt eius error inventore? Eveniet eius iste ex pariatur temporibus molestiae nostrum reiciendis ipsum sequi neque?</p>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

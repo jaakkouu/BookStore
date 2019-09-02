@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import fi.haagahelia.courses.course.model.Book;
-import fi.haagahelia.courses.course.model.BookRepository;
 import fi.haagahelia.courses.course.model.Category;
-import fi.haagahelia.courses.course.model.CategoryRepository;
+import fi.haagahelia.courses.course.dao.BookRepository;
+import fi.haagahelia.courses.course.dao.CategoryRepository;
 
 @SpringBootApplication
 public class CourseApplication {

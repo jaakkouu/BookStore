@@ -27,17 +27,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="book: ${books}">
+                    <tr th:each="book: ${books}" th:if="${books != null and !books.isEmpty()}">
                         <td th:text="${book.getAuthor()}" />
-                        <td th:text="${book.getTitle()}" />
+                        <td><a th:href="@{/book/{id}(id=${book.getId()})}"><span th:text="${book.getTitle()}" /></a></td>
                         <td th:text="${book.getYear()}" />
                         <td th:text="${book.getCategory().getName()}" />
                         <td th:text="${book.getIsbn()}" />
-                        <td><a th:href="@{/book/{id}/edit(id=${book.getId()})}"><i class="fa fa-edit fa-x2"></i></a></td>
-                        <td><a th:href="@{/book/{id}/delete(id=${book.getId()})}"><i class="fa fa-trash fa-x2"></i></a></td>
+                        <td style="text-align: center">
+                            <a th:href="@{/book/{id}/edit(id=${book.getId()})}"><i class="fa fa-edit fa-x2"></i></a></td>
+                        <td>
+                            <form action="#" th:action="@{/book/{id}/delete(id=${book.getId()})}" method="post">
+                                <input type="hidden" th:value="*{id}">
+                                <button type="submit"><i class="fa fa-trash fa-x2"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr th:unless="${books != null and !books.isEmpty()}">
+                        <td colspan="7"style="text-align: left">Please, add something by pressing the <em style="color: green">green</em> plus button</td>
                     </tr>
                 </tbody>
-                <cfooter
             </table>
         </main>
     </body>
