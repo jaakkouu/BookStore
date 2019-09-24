@@ -9,7 +9,16 @@
     </head>
     <body>
         <header>
-            <a th:href="@{/}"><h1><i class="fa fa-arrow-left"></i></h1></a>
+            <nav>
+                <h1 class="pageTitle"><a th:href="@{/}">Back</a></h1>
+                <ul>
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <span><input class="btn" type="submit" value="Sign Out"/></span>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
         </header>
         <main>
             <div th:object="${book}" class="book">

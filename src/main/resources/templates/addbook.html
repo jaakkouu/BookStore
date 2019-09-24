@@ -8,7 +8,16 @@
     </head>
     <body>
         <header>
-            <h1>Add Book</h1>
+            <nav>
+                <h1 class="pageTitle">Add Book</h1>
+                <ul>
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <span><input class="btn" type="submit" value="Sign Out"/></span>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
         </header>
         <main>
             <form action="#" th:action="@{/book/add}" th:object="${book}" method="post">

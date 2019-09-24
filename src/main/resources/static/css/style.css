@@ -16,17 +16,6 @@ main {
     margin-right: auto
 }
 
-header {
-    width: 100%;
-    height: auto;
-    padding: 15px;
-    border-bottom: 1px solid #eeeeee
-}
-
-header a {
-    text-decoration: none
-}
-
 table {
     width: 100%;
     background-color: #ffffff;
@@ -81,6 +70,27 @@ table tbody tr td {
 
 .fa.fa-plus {
     color: #2ECC40
+}
+
+
+.messageBox {
+    background-color: #efefef;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0 30px 0
+}
+
+.messageBox.success {
+    color: hsla(153, 43%, 15%, 1.0);
+    background-color: #2ECC40;
+    border: 1px solid #238623
+}
+
+.messageBox.error {
+    border: 1px solid #a51313;
+    color: hsla(3, 100%, 25%, 1.0);
+    background-color: #FF4136
 }
 
 form {
@@ -145,16 +155,28 @@ input.btn:hover {
     box-shadow: 0 1px 2px rgba(0,0,0,0.1)
 }
 
-.header {
+@media(max-width: 768px) {
+    .book {
+        grid-template-columns: 1fr;
+        grid-template-areas: "book-header" "book-sidebar" "book-content"
+    }
+
+    .book .sidebar {
+        padding-left: 0;
+        border-left: none
+    }
+}
+
+.book .header {
     grid-area: book-header;
 }
 
-.header .bookTitle * {
+.book .header .bookTitle * {
     padding-right: 5px;
     display: inline
 }
 
-.sidebar {
+.book .sidebar {
     padding-left: 10px;
     border-left: 1px solid #eeeeee;
     display: grid;
@@ -164,4 +186,69 @@ input.btn:hover {
 
 .content {
     grid-area: book-content;
+}
+
+header {
+    background-color: #f5f5f5;
+    height: 70px;
+    width: 100%;
+    text-align: right;
+    border-bottom: 1px solid #eee
+}
+
+header nav {
+    max-width: 1200px;
+    width: inherit;
+    padding: 0 15px;
+    margin: 0 auto;
+    height: inherit
+}
+
+header nav .pageTitle {
+    line-height: 70px
+}
+
+header nav form {
+    display: inline
+}
+
+header nav ul {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top
+}
+
+header nav ul li {
+    list-style-type: none;
+    padding: inherit;
+    display: inline
+}
+
+header nav ul li a,
+header nav ul li span {
+    color: #000;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 70px;
+    padding: 5px 15px;
+    opacity: 0.7;
+}
+
+header nav .pageTitle a {
+    text-decoration: none
+}
+
+header nav ul li span {
+    padding: 5px 0 5px 15px
+}
+
+header nav h1 {
+    float: left
+}
+
+footer {
+    margin-top: 24px;
+    text-align: center
 }

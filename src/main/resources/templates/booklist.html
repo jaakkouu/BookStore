@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +9,16 @@
     </head>
     <body>
         <header>
-            <h1>Books</h1>
+            <nav>
+                <h1 class="pageTitle">Books</h1>
+                <ul>
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <span><input class="btn" type="submit" value="Sign Out"/></span>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
         </header>
         <main>
             <table cellspacing=0>
@@ -33,14 +42,23 @@
                         <td th:text="${book.getYear()}" />
                         <td th:text="${book.getCategory().getName()}" />
                         <td th:text="${book.getIsbn()}" />
-                        <td style="text-align: center">
-                            <a th:href="@{/book/{id}/edit(id=${book.getId()})}"><i class="fa fa-edit fa-x2"></i></a></td>
-                        <td>
-                            <form action="#" th:action="@{/book/{id}/delete(id=${book.getId()})}" method="post">
-                                <input type="hidden" th:value="*{id}">
-                                <button type="submit"><i class="fa fa-trash fa-x2"></i></button>
-                            </form>
-                        </td>
+                        <th:block sec:authorize="hasRole('ADMIN')">
+                            <td style="text-align: center">
+                                <a th:href="@{/book/{id}/edit(id=${book.getId()})}"><i class="fa fa-edit fa-x2"></i></a>
+                            </td>
+                            <td>
+                                <form action="#" th:action="@{/book/{id}/delete(id=${book.getId()})}" method="post">
+                                    <input type="hidden" th:value="*{id}">
+                                    <button type="submit"><i class="fa fa-trash fa-x2"></i></button>
+                                </form>
+                            </td>
+                        </th:block>
+                        <th:block sec:authorize="!hasRole('ADMIN')">
+                            <td></td>    
+                            <td style="text-align: center">
+                                <a th:href="@{/book/{id}/edit(id=${book.getId()})}"><i class="fa fa-edit fa-x2"></i></a>
+                            </td>
+                        </th:block>
                     </tr>
                     <tr th:unless="${books != null and !books.isEmpty()}">
                         <td colspan="7"style="text-align: left">Please, add something by pressing the <em style="color: green">green</em> plus button</td>
@@ -48,5 +66,8 @@
                 </tbody>
             </table>
         </main>
+        <footer>
+            <p th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</p>
+        </footer>
     </body>
 </html>

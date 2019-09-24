@@ -16,6 +16,7 @@ import fi.haagahelia.courses.course.dao.BookRepository;
 import fi.haagahelia.courses.course.dao.CategoryRepository;
 import fi.haagahelia.courses.course.model.Book;
 
+
 @Controller
 public class BookController {
 
@@ -25,7 +26,12 @@ public class BookController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @RequestMapping("/book/add")
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("/book/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
         model.addAttribute("categories", categoryRepository.findAll());

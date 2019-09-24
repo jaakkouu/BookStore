@@ -8,7 +8,16 @@
     </head>
     <body>
         <header>
-            <h1>Edit Book: <span th:text="${book.getTitle()}" /></h1>
+            <nav>
+                <h1 class="pageTitle">Edit Book: <span th:text="${book.getTitle()}" /></h1>
+                <ul>
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <span><input class="btn" type="submit" value="Sign Out"/></span>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
         </header>
         <main>
             <form action="#" th:action="@{/book/update}" th:object="${book}" method="post">
