@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,8 +41,8 @@
                         <td><a th:href="@{/book/{id}(id=${book.getId()})}"><span th:text="${book.getTitle()}" /></a></td>
                         <td th:text="${book.getYear()}" />
                         <td th:text="${book.getCategory().getName()}" />
-                        <td th:text="${book.getIsbn()}" />
-                        <th:block sec:authorize="hasRole('ADMIN')">
+                        <th:block sec:authorize="${hasAuthority('ADMIN')}">
+                            <td th:text="${book.getIsbn()}" />
                             <td style="text-align: center">
                                 <a th:href="@{/book/{id}/edit(id=${book.getId()})}"><i class="fa fa-edit fa-x2"></i></a>
                             </td>
@@ -51,10 +51,10 @@
                                     <input type="hidden" th:value="*{id}">
                                     <button type="submit"><i class="fa fa-trash fa-x2"></i></button>
                                 </form>
-                            </td>
+                            </td> 
                         </th:block>
-                        <th:block sec:authorize="!hasRole('ADMIN')">
-                            <td></td>    
+                        <th:block sec:authorize="${!hasAuthority('ADMIN')}">
+                            <td colspan="2" th:text="${book.getIsbn()}" />
                             <td style="text-align: center">
                                 <a th:href="@{/book/{id}/edit(id=${book.getId()})}"><i class="fa fa-edit fa-x2"></i></a>
                             </td>
